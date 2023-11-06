@@ -1,9 +1,9 @@
-import React from "react";
-import { useDebouncedCallback } from "use-debounce";
-import { startOfToday, isToday as isTodayFns } from "date-fns";
+import React from 'react';
+import { useDebouncedCallback } from 'use-debounce';
+import { startOfToday, isToday as isTodayFns } from 'date-fns';
 
 // Import types
-import { DateTime } from "../helpers/types";
+import { DateTime } from '../helpers/types';
 
 // Import helpers
 import {
@@ -11,7 +11,7 @@ import {
   DEBOUNCE_WAIT_MAX,
   getPositionX,
   useIsomorphicLayoutEffect,
-} from "../helpers";
+} from '../helpers';
 
 interface useLayoutProps {
   height?: number;
@@ -45,13 +45,18 @@ export function useLayout({
 
   // -------- Handlers --------
   const handleScrollDebounced = useDebouncedCallback(
-    (value) => {
+    value => {
       setScrollY(value.y);
       setScrollX(value.x);
     },
     DEBOUNCE_WAIT,
     { maxWait: DEBOUNCE_WAIT_MAX }
   );
+
+  const handleScroll = (x: number, y: number) => {
+    setScrollX(x);
+    setScrollY(y);
+  };
 
   const handleOnScroll = React.useCallback(
     (e: React.UIEvent<HTMLDivElement, UIEvent> & { target: Element }) => {
@@ -140,10 +145,10 @@ export function useLayout({
   }, [height, width, startDate, isToday, handleOnScrollToNow]);
 
   useIsomorphicEffect(() => {
-    window.addEventListener("resize", handleResizeDebounced);
+    window.addEventListener('resize', handleResizeDebounced);
 
     return () => {
-      window.removeEventListener("resize", handleResizeDebounced);
+      window.removeEventListener('resize', handleResizeDebounced);
     };
   }, [width]);
 
@@ -159,5 +164,6 @@ export function useLayout({
     onScrollTop: handleOnScrollTop,
     onScrollLeft: handleOnScrollLeft,
     onScrollRight: handleOnScrollRight,
+    handleScroll,
   };
 }

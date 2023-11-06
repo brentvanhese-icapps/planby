@@ -1,11 +1,11 @@
-import React from "react";
-import { startOfToday } from "date-fns";
+import React from 'react';
+import { startOfToday } from 'date-fns';
 
 // Import interfaces
-import { Channel, Program, Theme } from "../helpers/interfaces";
+import { Channel, Program, Theme } from '../helpers/interfaces';
 
 // Import types
-import { DateTime, BaseTimeFormat, Position } from "../helpers/types";
+import { DateTime, BaseTimeFormat, Position } from '../helpers/types';
 
 // Import helpers
 import {
@@ -14,10 +14,10 @@ import {
   ITEM_OVERSCAN,
   getDayWidthResources,
   getTimeRangeDates,
-} from "../helpers";
+} from '../helpers';
 
 // Import theme
-import { theme as defaultTheme } from "../theme";
+import { theme as defaultTheme } from '../theme';
 
 // Import helpers
 import {
@@ -27,10 +27,10 @@ import {
   getConvertedPrograms,
   getItemVisibility,
   getSidebarItemVisibility,
-} from "../helpers";
+} from '../helpers';
 
 // Import components
-import { useLayout } from "./useLayout";
+import { useLayout } from './useLayout';
 
 interface useEpgProps {
   channels: Channel[];
@@ -58,7 +58,7 @@ export function useEpg({
   channels: channelsEpg,
   epg,
   startDate: startDateInput = defaultStartDateTime,
-  endDate: endDateInput = "",
+  endDate: endDateInput = '',
   isRTL = false,
   isBaseTimeFormat = false,
   isSidebar = true,
@@ -103,6 +103,7 @@ export function useEpg({
     onScrollTop,
     onScrollLeft,
     onScrollRight,
+    handleScroll,
   } = layoutProps;
 
   //-------- Variables --------
@@ -143,7 +144,7 @@ export function useEpg({
   );
 
   const isChannelVisible = React.useCallback(
-    (position: Pick<Position, "top">) =>
+    (position: Pick<Position, 'top'>) =>
       getSidebarItemVisibility(position, scrollY, layoutHeight, itemOverscan),
     [scrollY, layoutHeight, itemOverscan]
   );
@@ -190,6 +191,7 @@ export function useEpg({
     onScrollTop,
     onScrollLeft,
     onScrollRight,
+    handleScroll,
     scrollY,
     scrollX,
   };

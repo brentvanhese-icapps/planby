@@ -302,14 +302,15 @@ const globalStyles = `
 
 Properties returned from useEpg
 
-| Property        | Type                      | Description                          |
-| --------------- | ------------------------- | ------------------------------------ |
-| `scrollY`       | `number`                  | Current scroll y value               |
-| `scrollX`       | `number`                  | Current scroll x value               |
-| `onScrollLeft`  | `function(value: number)` | Default value is 300                 |
-| `onScrollRight` | `function(value: number)` | Default value is 300                 |
-| `onScrollToNow` | `function()`              | Scroll to current time/live programs |
-| `onScrollTop`   | `function(value: number)` | Default value is 300                 |
+| Property        | Type                                     | Description                          |
+| --------------- | ---------------------------------------- | ------------------------------------ |
+| `scrollY`       | `number`                                 | Current scroll y value               |
+| `scrollX`       | `number`                                 | Current scroll x value               |
+| `onScrollLeft`  | `function(value: number)`                | Default value is 300                 |
+| `onScrollRight` | `function(value: number)`                | Default value is 300                 |
+| `onScrollToNow` | `function()`                             | Scroll to current time/live programs |
+| `onScrollTop`   | `function(value: number)`                | Default value is 300                 |
+| `handleScroll`  | `function(value: number, value: number)` | Current scroll x and y value         |
 
 ### Channel schema
 
